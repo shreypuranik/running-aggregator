@@ -1,0 +1,81 @@
+<html>
+<title>Running Aggregator</title>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <style>
+        .footerbox{
+            background: #3E7A5E;
+            color: white;
+        }
+
+        .runningBox{
+            margin-top:10px;
+        }
+
+        .total{
+            color: #00688B;
+            text-align: center;
+            font-size: 72px;
+        }
+    </style>
+</head>
+<body>
+<div class="row footerbox">
+    <div class="col-sm-6 ">
+        <h3>&nbsp; Running Aggregator</h3>
+    </div>
+    <div class="col-sm-6">
+    </div>
+
+</div>
+<div class="container runningBox">
+    <h2>Your total recorded miles: </h2>
+    <h1 class="total">{{ total }} miles</h1>
+    <hr />
+    <h2>Is this up to date?</h2>
+    <p>Fill in your latest running time in the form below and watch your totaliser update!</p>
+    <div class="row">
+        <div class="col-sm-3">
+            </div>
+
+        <div class="col-sm-3">
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
+</div>
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-3">
+        </div>
+        </div>
+    <hr />
+    <h2>Running Breakdown</h2>
+    <div class="row">
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Distance</th>
+        <th scope="col">Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for run in pageData %}
+        <tr>
+            <td>{{ run.id }}</td>
+            <td>{{ run.name|e }}</td>
+            <td>{{ run.date|e }}</td>
+            <td>{{ run.distance|e }}</td>
+            <td>{{ run.time|e }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
+    </div>
+</body>
+</html>
